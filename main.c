@@ -139,10 +139,21 @@ code_found:
 		{
 			for (u32 i = 0; (message_index < message_length) && (i < (CODE_HEADER_SIZE - 2)); i++)
 			{
-				message[message_index] = pixel_message_start->red;
-				message[message_index + 1] = pixel_message_start->green;
-				message[message_index + 2] = pixel_message_start->blue;
-				message_index += 3;
+				u32 characters_to_write = message_length - message_index;
+				if (characters_to_write > 3)
+				{
+					characters_to_write = 3;
+				}
+				message[message_index] = pixel_message_start->blue;
+				if (characters_to_write > 1)
+				{
+					message[message_index + 1] = pixel_message_start->green;
+					if (characters_to_write > 2)
+					{
+						message[message_index + 2] = pixel_message_start->red;
+					}
+				}
+				message_index += characters_to_write;
 				pixel_message_start++;
 			}
 			pixel_message_start = GET_PIXEL_RELATIVE_DOWN(pixel_message_start, header->width, 1) - (CODE_HEADER_SIZE - 2);
