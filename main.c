@@ -71,7 +71,7 @@ int main(int argc, char** argv)
 {
 	if (argc != 2)
 	{
-		PRINT_ERROR("Usage: decode <input_filename>\n");
+		PRINT_ERROR("Usage: decoder <input_filename>\n");
 		return 1;
 	}
     struct string file_content = read_entire_file(argv[1]);
