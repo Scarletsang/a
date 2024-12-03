@@ -130,7 +130,7 @@ int main(int argc, char** argv)
     if (0)
 code_found:
     {
-        static char message[4096 * 2];
+        static char message[512];
         struct bmp_pixel* pixel_message_length = pixel + CODE_HEADER_SIZE - 1;
         u32 message_length = pixel_message_length->blue + pixel_message_length->red;
         u32 message_index = 0;
